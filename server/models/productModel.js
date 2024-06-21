@@ -7,12 +7,6 @@ const productSchema = new mongoose.Schema({
         required: [true, "Please enter product name"],
         trim: true
     },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-    },
     description: {
         type: String,
         required: [true, "Please enter product description"]

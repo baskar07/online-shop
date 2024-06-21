@@ -43,10 +43,12 @@ cloudinary.config({
 const user = require('./routes/userRoutes');
 const brand = require('./routes/brandRoutes');
 const category = require('./routes/categoryRoutes');
+const product = require('./routes/productRoutes');
 
 app.use('/api',user);
 app.use('/api/brand',brand);
 app.use('/api/category',category);
+app.use('/api/product',product);
 
 app.use(errorMiddleware);
 
