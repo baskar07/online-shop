@@ -1,7 +1,10 @@
 const  mongoose = require("mongoose");
 
+
 const connectDB = () =>{
-    mongoose.connect(process.env.MONGODB,{
+    const MONGO_URI = process.env.MONGO_URI;
+    
+    mongoose.connect( MONGO_URI, {
         useNewUrlParser:true,
         useUnifiedTopology:true
     }).then(()=>{
@@ -12,3 +15,4 @@ const connectDB = () =>{
 }
 
 module.exports = connectDB;
+
