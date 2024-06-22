@@ -216,9 +216,10 @@ module.exports = {
         6: '6px',
       },
       boxShadow: {
+        cardbox: '0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22)' ,
         default: '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
         card: '0px 1px 3px rgba(0, 0, 0, 0.12)',
-        'card-2': '0px 1px 2px rgba(0, 0, 0, 0.05)',
+        card2: '0px 1px 2px rgba(0, 0, 0, 0.05)',
         switcher:
           '0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #FFFFFF, inset 0px -1px 1px rgba(0, 0, 0, 0.1)',
         'switch-1': '0px 0px 5px rgba(0, 0, 0, 0.15)',
