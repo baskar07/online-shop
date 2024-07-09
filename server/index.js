@@ -46,11 +46,13 @@ const user = require('./routes/userRoutes');
 const brand = require('./routes/brandRoutes');
 const category = require('./routes/categoryRoutes');
 const product = require('./routes/productRoutes');
-
+const order = require('./routes/orderRoutes');
 app.use('/api',user);
 app.use('/api',brand);
 app.use('/api',category);
 app.use('/api',product);
+app.use('/api', order);
+
 
 app.use(errorMiddleware);
 
