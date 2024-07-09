@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  background: #f1f3f6;
+}
+
 .img-mask{
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
 }
@@ -32,9 +36,7 @@
 
 
 
-  /* 
-  
-  */
+
 
 
 

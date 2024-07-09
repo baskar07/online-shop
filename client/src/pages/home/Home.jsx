@@ -1,11 +1,15 @@
-import React from 'react'
-import Banner from './banner/Banner'
+import React from 'react';
+import Categories from '../../components/Categories';
+import Banner from './Banners/Banner';
 
 const Home = () => {
+ 
   return (
-    <main>
+   
+    <React.Fragment>
+      <Categories />
       <Banner />
-    </main>
+    </React.Fragment>
   )
 }
 

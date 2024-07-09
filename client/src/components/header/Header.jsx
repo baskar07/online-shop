@@ -1,53 +1,70 @@
-import React from "react";
-import { FaOpencart, FaSearch, FaShoppingCart } from "react-icons/fa";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import avatar from "../../assets/placeholder.jpg";
-import { FaUserCircle } from "react-icons/fa";
-import { FaBoxOpen } from "react-icons/fa";
+import logo from "../../assets/logo.png";
+import { Bars3Icon } from "@heroicons/react/20/solid";
+import {
+  FaBoxOpen,
+  FaSearch,
+  FaShoppingCart,
+  FaUserCircle,
+} from "react-icons/fa";
+
 import { MdFavorite } from "react-icons/md";
-
-
-import { Transition, Dialog } from "@headlessui/react";
-
 const Header = () => {
-
   return (
-    
-    <header className="top-0 left-0 w-full sticky transition bg-[#131111] text-white z-99">
-        <nav className="h-14 max-w-screen-2xl mx-auto flex justify-between items-center">
-            <Link className="flex items-center px-4 gap-4 mr-4" >
-                <FaOpencart className="text-4xl text-[#f1e44b]" />
-                <span className="text-2xl">TrolleyMart</span>
+    <header className="sticky top-0 z-999 flex w-full bg-white  drop-shadow-1">
+      <nav className="w-full h-12  px-4 py-2 ">
+        <div className="max-w-7xl mx-auto flex  items-center justify-between">
+          <div className="">
+            <Link className="flex items-center gap-2">
+              <img src={logo} className="w-auto h-8" alt="" />
+              <span className="text-2xl font-bold">
+                Shopify
+              </span>
             </Link>
+          </div>
+          <div className="relative flex-1   mx-4">
+            <form action="" className="w-full">
+              <input
+                type="text"
+                id="password"
+                class="w-full pl-3 pr-10 py-1 border text-black border-stone-500 rounded-lg hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors"
+                placeholder="Search..."
+              />
+              <button class="block w-7 h-5 text-center text-xl leading-0 absolute top-2 right-2 text-stone-500 focus:outline-none hover:text-gray-900 transition-colors">
+                <FaSearch />
+              </button>
+            </form>
+          </div>
 
-            <div className="flex flex-1 ">
-                <form action="" className="w-full flex justify-between ">
-                    <input type="text" className="w-full border-none outline-none px-6 text-black py-2"/>
-                    <button className="w-13  bg-amber-500 flex justify-center items-center text-xl"><FaSearch /></button>
-                </form>
-            </div>
+          <div className="flex gap-2 ml-4 ">
+            
 
-            <div className="flex">
-                <Link to='/login' className="flex items-center px-8 gap-2">
-                    <FaUserCircle className="text-xl" />
-                    <span>Login</span>
+                <Link to="/login" className="border-[1px] rounded-md px-4 text-sm py-1 text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white">
+                  Login
                 </Link>
-                <Link className="flex items-center px-8 gap-2">
-                    <FaBoxOpen  className="text-xl" />
-                    <span>Orders</span>
+
+                
+
+                <Link to="/login" className=" px-4 text-base py-1  hover:text-blue-600">
+                  Orders
                 </Link>
-                <Link className="flex items-center px-8 gap-2">
-                    <MdFavorite className="text-xl" />
-                    <span>Favorites</span>
+
+                <Link to="/login" className=" px-4 text-base py-1 hover:text-blue-600">
+                  Favorites
                 </Link>
-                <Link className="flex items-center px-8 gap-2">
-                    <FaShoppingCart className="text-xl" />
-                    <span>0</span>
+            
+               
+            
+                <Link className="flex items-center px-8 gap-2 hover:text-blue-600">
+                  <FaShoppingCart className="text-xl" />
+                  <span>0</span>
                 </Link>
-            </div>
-        </nav>
+             
+          </div>
+        </div>
+      </nav>
     </header>
-    
   );
 };
 

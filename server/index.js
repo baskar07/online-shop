@@ -1,10 +1,10 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cloudinary = require('cloudinary');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 const connectDB = require('./config/database');
 const errorMiddleware = require('./middleware/error');
@@ -14,9 +14,11 @@ const PORT  = process.env.PORT || 5000;
 const app = express();
 
 //config
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config({ path : 'server/config/.env'});
-}
+require('dotenv').config({ path : 'server/config/.env'});
+
+
+
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
@@ -46,9 +48,9 @@ const category = require('./routes/categoryRoutes');
 const product = require('./routes/productRoutes');
 
 app.use('/api',user);
-app.use('/api/brand',brand);
-app.use('/api/category',category);
-app.use('/api/product',product);
+app.use('/api',brand);
+app.use('/api',category);
+app.use('/api',product);
 
 app.use(errorMiddleware);
 

@@ -5,19 +5,32 @@ const User = require('../models/userModel');
 
 
 exports.isAuthenticated = asyncErrorHandler(async (req,res,next) => {
-    let token;
-    if(req?.headers?.authorization?.startsWith("Bearer")){
-        token = req.headers.authorization.split(" ")[1];
-        try {
-             const decoded = jwt.verify(token,process.env.JWT_SECRET);
-             req.user = await User.findById(decoded.id);
-             next();
-        } catch (error) {
-            return next(new ErrorHandler("token expired. Please login again", 401));
-        }
-    }else{
-        return next(new ErrorHandler("Please login again", 401));
+    const {refreshToken } = req.cookies;
+    if (!refreshToken) {
+        return next(new ErrorHandler("Please Login to Access", 401));
     }
 
-})
+    let token;
+    if(req.headers.authorization.startsWith("Bearer")){
+        token = req.headers.authorization.split(" ")[1];
+    }
+    
+    if (!token) {
+        return next(new ErrorHandler("Please Login to Access", 401));
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.id);
+    next();
+});
+
+
+exports.authorizeRoles = (...roles) =>{
+    return (req,res,next) =>{
+        if(!roles.includes(req.user.role)){
+            return next(new ErrorHandler(`Role: ${req.user.role} is not allowed`));
+        }
+        next();
+    }
+}
 
